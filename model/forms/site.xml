@@ -6,11 +6,44 @@
 			label="INSTL_LANGUAGE_LABEL"
 			size="20"
 			default="ru-RU"
-			onchange="Install.setlanguage();" />
+		/>
 
 		<field name="site_name" type="text" id="site_name" class="inputbox"
 			label="INSTL_SITE_NAME_LABEL"
 			required="true"
+		/>
+
+		<field name="site_template" type="installation.template" id="site_template"
+			class="chzn-select-deselect"
+			label="INSTL_SITE_TEMPLATE_LABEL"
+			size="20"
+			default=""
+			onmouse="Install.pretemplate();"
+			onchange="Install.settemplate();" 
+		/>
+
+		<field name="site_shop" type="radio" id="site_shop" class="btn-group" default="1"
+		label="INSTL_SITE_SHOP_LABEL"
+		filter="integer"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+
+		<field name="vm_shipping" type="installation.vmshipping" id="vm_shipping"
+			class="chzn-select-deselect"
+			label="INSTL_VM_SHIPPING_LABEL"
+			size="20"
+			default=""
+			onchange="Install.setvmchipping();" 
+		/>
+
+		<field name="vm_payment" type="installation.vmpayment" id="vm_payment"
+			class="chzn-select-deselect"
+			label="INSTL_VM_PAYMENT_LABEL"
+			size="20"
+			default=""
+			onchange="Install.setvmpayment();" 
 		/>
 
 		<!--
@@ -40,18 +73,7 @@
 			field="admin_password"
 			autocomplete="off"
 		/>
-		<field name="site_metadesc" type="textarea" id="site_metadesc" class="text_area noResize"
-			label="INSTL_SITE_METADESC_LABEL"
-			rows="3"
-		/>
 
-		<field name="site_offline" type="radio" id="site_offline" class="btn-group" default="0"
-		label="INSTL_SITE_OFFLINE_LABEL"
-		filter="integer"
-		>
-			<option value="1">JYES</option>
-			<option value="0">JNO</option>
-		</field>
 		//-->
 	</fieldset>
 </form>
