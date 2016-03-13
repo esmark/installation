@@ -77,7 +77,7 @@ class InstallationControllerSetdefaultlanguage extends JControllerBase
 		// Check that the string is an ISO Language Code avoiding any injection.
 		if (!preg_match('/^[a-z]{2}(\-[A-Z]{2})?$/', $frontend_lang))
 		{
-			$frontend_lang = 'en-GB';
+			$frontend_lang = 'ru-RU';
 		}
 
 		// Attempt to set the default site language
