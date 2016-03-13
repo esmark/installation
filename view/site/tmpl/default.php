@@ -3,86 +3,7 @@ defined('_JEXEC') or die;
 
 //Пошаговая панель установки
 echo JHtml::_('installation.stepbar'); ?>
-
-<script type="text/javascript">
-$(document).ready(function(){
-		xOffset = 500;
-		yOffset = 20;
-	
-	$(".bs-example_vyibor_shablon div.input-group label.form-control").mouseover(function(e){
-	var title= jQuery(this).attr("title");
-	var c = "";		
-	switch (title) {
-        case "vyibor_shablon0":
-        c = "images/0.png";
-    break;
-        case "vyibor_shablon1":
-        c = "images/1.png";
-    break;    
-        case "vyibor_shablon2":
-        c = "images/2.png";
-    break;	
-        case "vyibor_shablon3":
-        c = "images/3.png";
-    break;	
-        case "vyibor_shablon4":
-        c = "images/4.png";
-    break;
-    default:
-    c = "";
-    break;
-    }
-	
-		$("body").append("<p id='screenshot'><img src='"+ c +"' alt='url preview' /></p>");								 
-		$("#screenshot")
-			.css("top",(e.pageY - xOffset) + "px")
-			.css("left",(e.pageX + yOffset) + "px")
-			.css("z-index","9999")
-			.fadeIn("fast");
-		jQuery(this).mousemove(function(e){
-		$("#screenshot")
-			.css("top",(e.pageY - xOffset) + "px")
-			.css("left",(e.pageX + yOffset) + "px");
-	    });				
-   }).mouseout(function(){			
-		$("#screenshot").remove();
-   });				
-});
-
-
-</script>
-<style type="text/css">
-.bs-example_dizayn::after{
-    content: "Выбор шаблона Дизайна";
-}
-.bs-example_vyibor_sposobov_oplat::after{
-    content: "Выбор способов оплат";
-}
-.bs-example_vyibor_sposobov_dostavki::after{
-    content: "Выбор способов доставки";
-}
-#screenshot{
-    position:absolute;
-    border:1px solid #ccc;
-    background:#333;
-    padding:5px;
-    display:none;
-    color:#fff;
-}
-</style>
-    <div class="container bs-docs-container">
-	    <div class="row">
-		    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:center;">
-			    <h2>Настройка сайта</h2>
-			</div> 
-		</div>	    
-		
-		<div class="btn-toolbar">
-			<div class="btn-group pull-right">
-				<a href="#" class="btn btn-primary" onclick="Install.submitform();" rel="next" title="<?php echo JText::_('JNext'); ?>"><span class="icon-arrow-right icon-white"></span> <?php echo JText::_('JNext'); ?></a>
-			</div>
-		</div>
-		
+   <div class="container bs-docs-container">
 		<form action="index.php" method="post" id="languageForm" class="form-horizontal">
 			<div class="control-group">
 				<label for="jform_language" class="control-label"><?php echo JText::_('INSTL_SELECT_LANGUAGE_TITLE'); ?></label>
@@ -93,6 +14,96 @@ $(document).ready(function(){
 			<input type="hidden" name="task" value="setlanguage" />
 			<?php echo JHtml::_('form.token'); ?>
 		</form>
+		
+<form action="index.php" method="post" id="adminForm" class="form-validate form-horizontal">
+	<h3><?php echo JText::_('INSTL_SITE'); ?></h3>
+	<hr class="hr-condensed" />
+
+	<div class="row-fluid">
+		<div class="span6">
+			<div class="control-group">
+				<div class="control-label">
+					<?php echo $this->form->getLabel('site_name'); ?>
+				</div>
+				<div class="controls">
+					<?php echo $this->form->getInput('site_name'); ?>
+					<p class="help-block"><?php echo JText::_('INSTL_SITE_NAME_DESC'); ?></p>
+				</div>
+			</div>
+			<!--//
+			<div class="control-group">
+				<div class="control-label">
+					<?php echo $this->form->getLabel('site_metadesc'); ?>
+				</div>
+				<div class="controls">
+					<?php echo $this->form->getInput('site_metadesc'); ?>
+					<p class="help-block">
+						<?php echo JText::_('INSTL_SITE_METADESC_TITLE_LABEL'); ?>
+					</p>
+				</div>
+			</div>
+			//-->
+		</div>
+		<div class="span6">
+			<!--//
+			<div class="control-group">
+				<div class="control-label">
+					<?php echo $this->form->getLabel('admin_email'); ?>
+				</div>
+				<div class="controls">
+					<?php echo $this->form->getInput('admin_email'); ?>
+					<p class="help-block"><?php echo JText::_('INSTL_ADMIN_EMAIL_DESC'); ?></p>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="control-label">
+					<?php echo $this->form->getLabel('admin_user'); ?>
+				</div>
+				<div class="controls">
+					<?php echo $this->form->getInput('admin_user'); ?>
+					<p class="help-block"><?php echo JText::_('INSTL_ADMIN_USER_DESC'); ?></p>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="control-label">
+					<?php echo $this->form->getLabel('admin_password'); ?>
+				</div>
+				<div class="controls">
+					<?php echo $this->form->getInput('admin_password'); ?>
+					<p class="help-block"><?php echo JText::_('INSTL_ADMIN_PASSWORD_DESC'); ?></p>
+				</div>
+			</div>
+			<div class="control-group">
+				<div class="control-label">
+					<?php echo $this->form->getLabel('admin_password2'); ?>
+				</div>
+				<div class="controls">
+					<?php echo $this->form->getInput('admin_password2'); ?>
+				</div>
+			</div>
+			//-->
+		</div>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<div class="control-group">
+				<div class="control-label">
+					<?php echo $this->form->getLabel('site_offline'); ?>
+				</div>
+				<div class="controls">
+					<?php echo $this->form->getInput('site_offline'); ?>
+					<p class="help-block">
+						<?php echo JText::_('INSTL_SITE_OFFLINE_TITLE_LABEL'); ?>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<input type="hidden" name="task" value="site" />
+	<?php echo JHtml::_('form.token'); ?>
+</form>
+
 <?php
 echo "<pre>";
 print_r($this->form);
@@ -230,3 +241,10 @@ echo "</pre>";
 		</div>
 		</form>
 	</div>
+	
+		<div class="btn-toolbar">
+			<div class="btn-group pull-right">
+				<a href="#" class="btn btn-primary" onclick="Install.submitform();" rel="next" title="<?php echo JText::_('JNext'); ?>"><span class="icon-arrow-right icon-white"></span> <?php echo JText::_('JNext'); ?></a>
+			</div>
+		</div>
+		

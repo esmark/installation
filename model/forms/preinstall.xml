@@ -5,7 +5,7 @@
 			class="chzn-select-deselect"
 			label="INSTL_LANGUAGE_LABEL"
 			size="20"
-			default="en-GB"
+			default="ru-RU"
 			required="true"
 			onchange="Install.setlanguage();" />
 	</fieldset>

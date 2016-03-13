@@ -13,6 +13,7 @@
 			required="true"
 		/>
 
+		<!--
 		<field name="admin_email" type="email" id="admin_email" class="inputbox"
 			label="INSTL_ADMIN_EMAIL_LABEL"
 			validate="email"
@@ -39,7 +40,6 @@
 			field="admin_password"
 			autocomplete="off"
 		/>
-
 		<field name="site_metadesc" type="textarea" id="site_metadesc" class="text_area noResize"
 			label="INSTL_SITE_METADESC_LABEL"
 			rows="3"
@@ -52,5 +52,6 @@
 			<option value="1">JYES</option>
 			<option value="0">JNO</option>
 		</field>
+		//-->
 	</fieldset>
 </form>
